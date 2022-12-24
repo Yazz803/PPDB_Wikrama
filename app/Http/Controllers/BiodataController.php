@@ -11,21 +11,23 @@ class BiodataController extends Controller
 {
     public function store(Request $request) {
         $validatedData = $request->validate([
-            'nisn' => 'required|max:11',
+            'nisn' => 'required|max:11|unique:biodatas',
             'nama' => 'required',
             'jk' => 'required',
             'asal_sekolah' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:biodatas',
             'nomor_hp' => 'required',
             'nomor_hp_ayah' => 'required',
             'nomor_hp_ibu' => 'required',
         ],[
             'nisn.required' => "NISN tidak boleh kosong",
+            'nisn.unique' => "NISN sudah terdaftar",
             'nisn.max' => "NISN tidak boleh lebih dari 11 karakter",
             'nama.required' => "Nama tidak boleh kosong",
             'jk.required' => "Jenis Kelamin tidak boleh kosong",
             'asal_sekolah.required' => "Asal Sekolah tidak boleh kosong",
             'email.required' => "Email tidak boleh kosong",
+            'email.unique' => "Email sudah terdaftar",
             'nomor_hp.required' => "Nomor HP tidak boleh kosong",
             'nomor_hp_ayah.required' => "Nomor HP Ayah tidak boleh kosong",
             'nomor_hp_ibu.required' => "Nomor HP Ibu tidak boleh kosong",
