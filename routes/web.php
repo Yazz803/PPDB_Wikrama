@@ -34,7 +34,7 @@ Route::group(['middleware' => 'mustLogin', 'prefix' => 'dashboard'], function ()
         });
     });
 });
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
