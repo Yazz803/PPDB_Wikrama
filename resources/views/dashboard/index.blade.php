@@ -9,15 +9,57 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-        <div class="alert alert-secondary" role="alert">
-            <h4 class="alert-heading">Well done!</h4>
-            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-            <hr>
-            <h4 class="alert-heading text-info font-weight-bold"><i class="fa fa-bell"></i> Notification</h4>
-            <div class="alert alert-success" role="alert">
-                A simple success alert—check it out!
+    <div class="row justify-content-between align-items-start">
+        <div class="card-dashboard alert bg-light border border-dark shadow p-3 mb-5 bg-body rounded" style="width: 49%" role="alert">
+            <h4 class="alert-heading font-weight-bold">{{ auth()->user()->role == 'admin' ? 'Admin' : 'Biodata Siswa' }}</h4>
+            @if(auth()->user()->role == 'user')
+            <ul>
+                <li><span class="font-weight-bold">Nomor Seleksi : </span>{{ auth()->user()->biodata->no_seleksi }}</li>
+                <li><span class="font-weight-bold">Nama : </span>{{ auth()->user()->biodata->nama }}</li>
+                <li><span class="font-weight-bold">NISN : </span>{{ auth()->user()->biodata->nisn }}</li>
+                <li><span class="font-weight-bold">Email : </span>{{ auth()->user()->biodata->email }}</li>
+                <li><span class="font-weight-bold">Asal Sekolah : </span>{{ auth()->user()->biodata->asal_sekolah }}</li>
+                <li><span class="font-weight-bold">Nomor HP : </span>{{ auth()->user()->biodata->nomor_hp }}</li>
+                <li><span class="font-weight-bold">Nomor HP Ayah : </span>{{ auth()->user()->biodata->nomor_hp_ayah }}</li>
+                <li><span class="font-weight-bold">Nomor HP Ibu : </span>{{ auth()->user()->biodata->nomor_hp_ibu }}</li>
+            </ul>
+            @else
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia consequuntur perspiciatis voluptatibus deleniti non eligendi voluptate dignissimos quo recusandae maiores!</p>
+            @endif
+        </div>
+
+        <div class="card-dashboard alert bg-light border border-dark shadow p-3 mb-5 bg-body rounded" style="width: 49%" role="alert">
+            <h4 class="alert-heading text-dark font-weight-bold"><i class="fa fa-bell"></i> Notification</h4>
+            @forelse($pembayarans as $pembayaran)
+                @if($pembayaran->status == 'di tolak')
+                <div class="alert bg-danger text-light">
+                    <h5 class="font-weight-bold">Pembayaran Di tolak!</h5>
+                    <p class="mb-0">Di tolak tgl : <span class="font-weight-bold">{{ $pembayaran->updated_at->format('d F Y H:i:s') }}</span></p>
+                    <p>Alasan Di tolak  : <span class="font-weight-bold">{{ $pembayaran->message }}</span></p>
+                    <p>Silahkan mengisi form pembayaran kembali <a class="text-info font-weight-bold" href="{{ route('dashboard.pembayaran.user') }}">Di sini</a></p>
+                </div>
+                @elseif($pembayaran->status == 'di verifikasi')
+                <div class="alert bg-success text-light">
+                    <h5 class="font-weight-bold">Pembayaran Berhasil dan diverifikasi!</h5>
+                    <p>Di verifikasi tgl : <span class="font-weight-bold">{{ $pembayaran->updated_at->format('d F Y H:i:s') }}</span></p>
+                </div>
+                @else
+                <div class="alert bg-info text-light">
+                    <h5 class="font-weight-bold">Sedang Menunggu Verifikasi Pembayaran</h5>
+                    <p>Tanggal Pembayaran : <span class="font-weight-bold">{{ $pembayaran->created_at->format('d F Y H:i:s') }}</span></p>
+                </div>
+                @endif
+            @empty
+            <div class="alert bg-warning text-light">
+                @if (auth()->user()->role == 'user')
+                {{-- <p class="m-0 font-weight-bold">Silahkan Lakukan Pembayaran Sebelum Tanggal <span class="btn btn-primary">{{ date('d F Y', strtotime("1 days")) }}</span></p> --}}
+                <p class="m-0 font-weight-bold">Silahkan Lakukan Pembayaran</p>
+                @else
+                <p class="m-0 font-weight-bold">Silahkan mengecek data pendaftaran beserta bukti pembayaran para calon siswa</p>
+                <p class="m-0">Total data pembayaran : <span class="font-weight-bold">{{ $allPembayarans->count() }}</span></p>
+                @endif
             </div>
+            @endforelse
         </div>
     </div>
 

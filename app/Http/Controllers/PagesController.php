@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Biodata;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -15,6 +17,38 @@ class PagesController extends Controller
     }
 
     public function dashboard() {
-        return view('dashboard.index');
+        $pembayarans = Pembayaran::where('user_id', auth()->user()->id)->get();
+        $allPembayarans = Pembayaran::all();
+        return view('dashboard.index', compact('pembayarans', 'allPembayarans'));
+    }
+
+    public function dashboardPembayaranUser() {
+        $pembayarans = Pembayaran::where('user_id', auth()->user()->id)->get();
+        $pembayaran = Pembayaran::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
+        $checkP = Pembayaran::where('user_id', auth()->user()->id)->exists();
+        return view('dashboard.pembayaranUser', [
+            'pembayarans' => $pembayarans,
+            'pembayaran' => $pembayaran,
+            'checkP' => $checkP
+        ]);
+    }
+
+    public function dashboardPembayaranAdmin() {
+        $pembayarans = Pembayaran::all();
+        return view('dashboard.pembayaranAdmin', [
+            'pembayarans' => $pembayarans
+        ]);
+    }
+
+    public function detailPembayaran(Pembayaran $pembayaran) {
+        return view('dashboard.detailPembayaran', [
+            'pembayaran' => $pembayaran
+        ]);
+    }
+
+    public function buktiPembayaran(Pembayaran $pembayaran) {
+        return view('dashboard.buktiPembayaran', [
+            'pembayaran' => $pembayaran
+        ]);
     }
 }

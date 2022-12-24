@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('biodatas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable();
             $table->integer('nisn')->unique();
             $table->string('nama');
             $table->string('email');
-            $table->integer('no_seleksi');
+            $table->string('no_seleksi');
             $table->enum('jk', ['laki-laki', 'perempuan']);
             $table->string('asal_sekolah');
             $table->string('nomor_hp');

@@ -11,6 +11,8 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -19,6 +21,23 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <!-- css untuk select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- jika menggunakan bootstrap4 gunakan css ini  -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+        
+    <style>
+        @media (max-width: 768px) {
+            .input-pembayaran {
+                width: 100% !important;
+            }
+            .card-dashboard {
+                width: 100% !important;
+            }
+        }
+    </style>
 
 </head>
 
@@ -97,6 +116,23 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/dashboard/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/demo/chart-pie-demo.js') }}"></script>
+
+    <!-- wajib jquery  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+     {{-- js untuk select2 --}}
+     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+     <script>
+         $(document).ready(function () {
+             $("#nama_bank").select2({
+                 theme: 'bootstrap4',
+                 placeholder: "-- Select Bank --"
+             });
+         });
+     </script> 
 
 </body>
 
