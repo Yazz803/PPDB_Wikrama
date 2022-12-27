@@ -18,7 +18,7 @@
                 <h3 class="pb-2 pb-md-0 px-md-2 text-center">Form Pendaftaran PPDB</h3>
                 <h5 class="text-center mb-4 text-secondary">SMK Wikrama Bogor TP. 2023-2024</h5>
   
-              <form class="px-md-2" action="{{ route('form.store') }}" method="POST">
+              <form class="px-md-2" action="{{ route('form.store') }}" method="POST" id="formPendaftaran">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-4">
@@ -113,7 +113,7 @@
   
                 <div class="d-flex justify-content-around align-items-center">
                   <a href="{{ route('landingpage') }}" class="btn btn-primary">Back to Home</a>
-                  <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+                  <button type="submit" onclick="resetMssgError()" class="btn btn-success btn-lg mb-1 btn-kirim">Submit</button>
                 </div>
   
               </form>
@@ -135,5 +135,15 @@
             document.getElementById('other_school').style.display = 'none';
         }
     }
+
+    // let formP = document.getElementById('formPendaftaran');
+    let errorMsg = document.querySelectorAll('.text-danger');
+    function resetMssgError() {
+      errorMsg.forEach((error) => {
+        error.classList.toggle('d-none');
+      });
+    }
+
+
   </script>
 @endsection
