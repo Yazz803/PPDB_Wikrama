@@ -32,23 +32,4 @@ class PagesController extends Controller
             'checkP' => $checkP
         ]);
     }
-
-    public function dashboardPembayaranAdmin() {
-        $pembayarans = Pembayaran::all();
-        return view('dashboard.pembayaranAdmin', [
-            'pembayarans' => $pembayarans
-        ]);
-    }
-
-    public function detailPembayaran(Pembayaran $pembayaran) {
-        return view('dashboard.detailPembayaran', [
-            'pembayaran' => $pembayaran
-        ]);
-    }
-
-    public function buktiPembayaran(Pembayaran $pembayaran) {
-        return view('dashboard.buktiPembayaran', [
-            'pembayaran' => $pembayaran
-        ]);
-    }
 }

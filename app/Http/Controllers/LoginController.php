@@ -21,7 +21,7 @@ class LoginController extends Controller
             'password.required' => 'Password tidak boleh kosong',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->get('remember'))) {
             $request->session()->regenerate();
 
             return redirect()->route('dashboard.index');

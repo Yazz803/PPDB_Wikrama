@@ -54,6 +54,9 @@
                                                 <div class="ml-3 text-danger">{{ $message }}</div>
                                             @enderror
                                     </div>
+                                    {{-- Remember me --}}
+                                    <input type="hidden" name="remember" value="1" required>
+                                    
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>

@@ -2,13 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
 use App\Models\Biodata;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
-use PDF;
+use Illuminate\Support\Facades\File;
 
 class BiodataController extends Controller
 {
+
+    public function dataSemuaSiswa() {
+        $biodatas = Biodata::all();
+        return view('dashboard.dataSemuaSiswa', [
+            'biodatas' => $biodatas
+        ]);
+    }
+
+    public function dataSiswa(Biodata $biodata) {
+        return view('dashboard.dataSiswa', [
+            'biodata' => $biodata
+        ]);
+    }
+
     public function store(Request $request) {
         $validatedData = $request->validate([
             'nisn' => 'required|max:11|unique:biodatas',
@@ -75,6 +91,17 @@ class BiodataController extends Controller
         return $pdf->download(str_replace(' ', '_', $validatedData['nama']) . '_' . $validatedData['nisn'] . '.pdf');
 
         // return back()->with('success', 'Pendaftaran berhasil!');
+    }
 
+    public function destroy(Biodata $biodata) {
+        User::where('id', $biodata->user_id)->delete();
+        // delete image pembayaran
+        $pembayaranUser = Pembayaran::where('biodata_id', $biodata->id)->get();
+        foreach($pembayaranUser as $pembayaran){
+            File::delete(public_path('assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran));
+        }
+        Pembayaran::where('biodata_id', $biodata->id)->delete();
+        $biodata->delete();
+        return back()->with('successDelete', 'Data berhasil dihapus!');
     }
 }

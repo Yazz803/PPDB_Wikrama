@@ -26,17 +26,26 @@
             <span>Dashboard</span></a>
     </li>
 
-    <li class="nav-item {{ Request::is('dashboard/pembayaran*') ? 'active' : '' }}">
-        @if(auth()->user()->role == 'user')
-        <a class="nav-link" href="{{ route('dashboard.pembayaran.user') }}">
-            <i class="fas fa-fw fa-credit-card"></i>
-            <span>Pembayaran</span></a>
-        @elseif(auth()->user()->role == 'admin')
-        <a class="nav-link" href="{{ route('dashboard.pembayaran.admin') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Pembayaran</span></a>
-        @endif
-    </li>
+    @if(auth()->user()->role == 'user')
+        <li class="nav-item {{ Request::is('dashboard/pembayaran*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard.pembayaran.user') }}">
+                <i class="fas fa-fw fa-credit-card"></i>
+                <span>Pembayaran</span></a>
+        </li>
+    @endif
+
+    @if(auth()->user()->role == 'admin')
+        <li class="nav-item {{ Request::is('dashboard/pembayaran*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard.pembayaran.admin') }}">
+                <i class="fas fa-fw fa-credit-card"></i>
+                <span>Pembayaran</span></a>
+        </li>
+        <li class="nav-item {{ Request::is('dashboard/data-siswa*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard.dataSemuaSiswa') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Data Students</span></a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

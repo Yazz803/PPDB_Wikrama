@@ -28,10 +28,15 @@ Route::group(['middleware' => 'mustLogin', 'prefix' => 'dashboard'], function ()
         Route::middleware('AdminOnly')->group(function() {
             Route::put('/tolak-pembayaran/{pembayaran:id}', [PembayaranController::class, 'updateTolakPembayaran'])->name('dashboard.pembayaran.tolak');
             Route::put('/verifikasi-pembayaran/{pembayaran:id}', [PembayaranController::class, 'updateVerifikasiPembayaran'])->name('dashboard.pembayaran.verifikasi');
-            Route::get('/list-pembayaran', [PagesController::class, 'dashboardPembayaranAdmin'])->name('dashboard.pembayaran.admin');
-            Route::get('/detail-pembayaran/{pembayaran:id}', [PagesController::class, 'detailPembayaran'])->name('dashboard.detailPembayaran');
-            Route::get('/bukti-pembayaran/{pembayaran:id}', [PagesController::class, 'buktiPembayaran'])->name('dashboard.buktiPembayaran');
+            Route::get('/list-pembayaran', [PembayaranController::class, 'dashboardPembayaranAdmin'])->name('dashboard.pembayaran.admin');
+            Route::get('/detail-pembayaran/{pembayaran:id}', [PembayaranController::class, 'detailPembayaran'])->name('dashboard.detailPembayaran');
+            Route::get('/bukti-pembayaran/{pembayaran:id}', [PembayaranController::class, 'buktiPembayaran'])->name('dashboard.buktiPembayaran');
         });
+    });
+    Route::middleware('AdminOnly')->group(function () {
+        Route::get('/data-siswa', [BiodataController::class, 'dataSemuaSiswa'])->name('dashboard.dataSemuaSiswa');
+        Route::get('/data-siswa/{biodata:id}', [BiodataController::class, 'dataSiswa'])->name('dashboard.dataSiswa');
+        Route::delete('/data-siswa/{biodata:id}', [BiodataController::class, 'destroy'])->name('dashboard.dataSiswa.delete');
     });
 });
 Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');

@@ -9,24 +9,23 @@ use Intervention\Image\Facades\Image;
 
 class PembayaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function dashboardPembayaranAdmin() {
+        $pembayarans = Pembayaran::all();
+        return view('dashboard.pembayaranAdmin', [
+            'pembayarans' => $pembayarans
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function detailPembayaran(Pembayaran $pembayaran) {
+        return view('dashboard.detailPembayaran', [
+            'pembayaran' => $pembayaran
+        ]);
+    }
+
+    public function buktiPembayaran(Pembayaran $pembayaran) {
+        return view('dashboard.buktiPembayaran', [
+            'pembayaran' => $pembayaran
+        ]);
     }
 
     /**
@@ -66,7 +65,7 @@ class PembayaranController extends Controller
             // }
             $image = $request->file('bukti_pembayaran');
             // $imageSize = round($image->getSize() / 1000); // Ngitung size gambar dalam KB
-            $imageName = 'Pembayaran_' . $request->nama_pemilik . '_' . auth()->user()->biodata->nisn . '.' . $image->extension();
+            $imageName = 'Pembayaran_' . $request->nama_pemilik . '_' . auth()->user()->biodata->nisn . "_" . mt_rand(100, 1000) . '.' . $image->extension();
             // if($imageSize > 1024){
             //     $img = Image::make($image->path());
             //     $img->resize(500,500, function ($const) {
@@ -82,28 +81,6 @@ class PembayaranController extends Controller
         Pembayaran::create($validatedData);
 
         return back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pembayaran  $pembayaran
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pembayaran $pembayaran)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pembayaran  $pembayaran
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pembayaran $pembayaran)
-    {
-        //
     }
 
     /**

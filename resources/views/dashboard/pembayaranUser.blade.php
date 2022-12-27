@@ -3,7 +3,15 @@
 @section('content')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4 border border-dark px-4 py-3 rounded" style="background-color: #FFF">
-        <h1 class="h3 mb-0 px-3 py-2 rounded font-weight-bold">Pembayaran <br> 
+        <h1 class="h3 mb-0 px-3 py-2 rounded font-weight-bold">
+          @if(!$checkP || $pembayaran->message != NULL)
+            Upload Bukti Pembayaran
+          @elseif($pembayaran->status == NULL)
+            <span class="text-info">Pembayaran Sedang Di proses</span>
+          @else
+            <span class="text-success">Pembayaran Berhasil</span>
+          @endif
+          <br> 
           <span style="font-size: 13px;">{{ $pembayarans ? '' : 'Silahkan Mengisi Form Pembayaran di bawah ini' }}</span>
         </h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
