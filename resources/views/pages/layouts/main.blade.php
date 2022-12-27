@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="icon" href="{{ asset('assets/pages/images/logo-wk.png') }}" type="image/png">
 
     <title>PPDB SMK Wikrama Bogor</title>
     
@@ -19,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('assets/pages/css/templatemo-grad-school.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/pages/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/pages/css/lightbox.css') }}">
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="sweetalert2.min.css">
@@ -42,12 +46,7 @@ https://templatemo.com/tm-557-grad-school
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p><i class="fa fa-copyright"></i> Copyright {{ date('Y') }} by Muhammad Yazid Akbar  
-          
-           {{-- | Design: <a href="https://templatemo.com" rel="sponsored" target="_parent">TemplateMo</a><br>
-           Distributed By: <a href="https://themewagon.com" rel="sponsored" target="_blank">ThemeWagon</a> --}}
-          
-          </p>
+          <p><i class="fa fa-copyright"></i> Copyright {{ date('Y') }} by Muhammad Yazid Akbar  </p>
         </div>
       </div>
     </div>
@@ -65,6 +64,9 @@ https://templatemo.com/tm-557-grad-school
     <script src="{{ asset('assets/pages/js/video.js') }}"></script>
     <script src="{{ asset('assets/pages/js/slick-slider.js') }}"></script>
     <script src="{{ asset('assets/pages/js/custom.js') }}"></script>
+    <script>
+      AOS.init()
+    </script>
     <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');

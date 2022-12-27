@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Biodata;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,8 +27,22 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Sutaro Putra Pratama',
             'email' => 'sutaro@gmail.com',
-            'password' => bcrypt('1234'),
+            'password' => bcrypt('12108627'),
             'role' => 'user',
+            'biodata_id' => 1
+        ]);
+
+        Biodata::create([
+            'nisn' => '12108627',
+            'nama' => 'Sutaro Putra Pratama',
+            'jk' => 'laki-laki',
+            'asal_sekolah' => 'SMP Darma Bakti',
+            'email' => 'sutaro@gmail.com',
+            'nomor_hp' => '081290215655',
+            'nomor_hp_ayah' => '08129002231',
+            'nomor_hp_ibu' => '08159023412',
+            'no_seleksi' => '001',
+            'user_id' => 2,
         ]);
     }
 }

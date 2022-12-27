@@ -15,6 +15,10 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+        ],[
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Email tidak valid',
+            'password.required' => 'Password tidak boleh kosong',
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -23,7 +27,7 @@ class LoginController extends Controller
             return redirect()->route('dashboard.index');
         }
 
-        return back()->with('error', 'Silahkan cek kembali email dan password anda.');
+        return back()->with('loginGagal', '<span class="font-weight-bold">Login Gagal! </span>Email atau Password anda salah!');
     }
 
     public function logout(Request $request)

@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="{{ asset('assets/pages/images/logo-wk.png') }}" type="image/png">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Dashboard PPDB SMK Wikrama</title>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 

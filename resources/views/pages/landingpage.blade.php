@@ -97,13 +97,13 @@
       </div>
       <div class="col-md-12">
         <div id='tabs'>
-          <ul>
+          <ul data-aos="fade-down" data-aos-duration="1000">
             <li><a href='#tabs-1'>PPLG</a></li>
             <li><a href='#tabs-2'>TKJT</a></li>
             <li><a href='#tabs-3'>MPLB</a></li>
           </ul>
           <section class='tabs-content'>
-            <article id='tabs-1'>
+            <article id='tabs-1' data-aos="fade-right" data-aos-duration="1000">
               <div class="row">
                 <div class="col-md-6">
                   <img src="{{ asset('assets/pages/images/choose-us-image-01.png') }}" alt="">
@@ -144,7 +144,7 @@
 </section>
 
 <section class="section courses" data-section="section4">
-  <div class="container-fluid">
+  <div class="container-fluid" data-aos="fade-down" data-aos-duration="1000">
     <div class="row">
       <div class="col-md-12">
         <div class="section-heading">
@@ -179,7 +179,7 @@
 <section class="section video" data-section="section5">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 align-self-center">
+      <div class="col-md-6 align-self-center" data-aos="fade-right" data-aos-duration="1000">
         <div class="left-content">
           <span>our presentation is for you</span>
           <h4>Watch the video to learn more <em>about SMK Wikrama Bogor</em></h4>
@@ -188,7 +188,7 @@
           <div class="main-button"><a rel="nofollow" href="https://www.youtube.com/@multimediawikrama7482" target="_parent">Youtube Channel Wikrama</a></div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" data-aos="zoom-in" data-aos-duration="1000">
         <article class="video-item">
           <div class="video-caption">
             <h4>Profile TEFA Wikrama Bogor</h4>
@@ -203,7 +203,7 @@
 </section>
 
 <section class="section contact" data-section="section6">
-  <div class="container">
+  <div class="container" data-aos="fade-down" data-aos-duration="1000">
     <div class="row">
       <div class="col-md-12">
         <div class="section-heading">
@@ -243,7 +243,7 @@
       </div>
       <div class="col-md-6">
         <div id="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.0158910565074!2d106.84162231434478!3d-6.6449477668061245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c89505b4c37d%3A0x307fc4a38e65fa2b!2sSMK%20Wikrama%20Bogor!5e0!3m2!1sid!2sid!4v1671867446027!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.0158910565074!2d106.84162231434478!3d-6.6449477668061245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c89505b4c37d%3A0x307fc4a38e65fa2b!2sSMK%20Wikrama%20Bogor!5e0!3m2!1sid!2sid!4v1671867446027!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
