@@ -15,7 +15,7 @@ class BiodataController extends Controller
             'nama' => 'required',
             'jk' => 'required',
             'asal_sekolah' => 'required',
-            'email' => 'required|unique:biodatas',
+            'email' => 'required|unique:users|unique:biodatas',
             'nomor_hp' => 'required',
             'nomor_hp_ayah' => 'required',
             'nomor_hp_ibu' => 'required',

@@ -10,7 +10,7 @@
     <div class="pt-4 border border-dark rounded" style="background-color: #FFF">
         <center>
             <a href="{{ asset('assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran) }}" target="_blank">
-                <img class="mb-4" src="{{ asset('assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran) }}" alt="">
+                <img class="mb-4" style="width: 80%" src="{{ asset('assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran) }}" alt="">
             </a>
             <p><span class="font-weight-bold">Nama Bank : </span>{{ $pembayaran->nama_bank }}</p>
             <p><span class="font-weight-bold">Nama Pemilik Rekening : </span>{{ $pembayaran->nama_pemilik }}</p>

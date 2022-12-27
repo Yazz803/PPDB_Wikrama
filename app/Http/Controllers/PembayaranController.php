@@ -41,7 +41,7 @@ class PembayaranController extends Controller
             'nama_bank' => 'required',
             'nama_pemilik' => 'required',
             'nominal' => 'required|min:2',
-            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ],[
             'nama_bank.required' => 'Nama Bank tidak boleh kosong',
             'nama_pemilik.required' => 'Nama Pemilik tidak boleh kosong',
@@ -50,7 +50,7 @@ class PembayaranController extends Controller
             'bukti_pembayaran.required' => 'Bukti Pembayaran tidak boleh kosong',
             'bukti_pembayaran.image' => 'Bukti Pembayaran harus berupa gambar',
             'bukti_pembayaran.mimes' => 'Bukti Pembayaran harus berupa gambar dengan format jpeg, png, jpg',
-            'bukti_pembayaran.max' => 'Bukti Pembayaran maksimal 2MB',
+            'bukti_pembayaran.max' => 'Bukti Pembayaran maksimal 5MB',
         ]);
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['biodata_id'] = auth()->user()->biodata->id;
@@ -59,16 +59,22 @@ class PembayaranController extends Controller
         }
 
         if($request->file('bukti_pembayaran')){
+            // Buat Folder baru
             // $imagePath = public_path('/assets/buktiPembayaran/');
             // if(!file_exists($imagePath)){
             //     mkdir($imagePath, 666, true);
             // }
             $image = $request->file('bukti_pembayaran');
+            // $imageSize = round($image->getSize() / 1000); // Ngitung size gambar dalam KB
             $imageName = 'Pembayaran_' . $request->nama_pemilik . '_' . auth()->user()->biodata->nisn . '.' . $image->extension();
-            $img = Image::make($image->path());
-            $img->resize(500,500, function ($const) {
-                $const->aspectRatio();
-            })->save(public_path('/assets/buktiPembayaran/' . $imageName));
+            // if($imageSize > 1024){
+            //     $img = Image::make($image->path());
+            //     $img->resize(500,500, function ($const) {
+            //         $const->aspectRatio();
+            //     })->save(public_path('/assets/buktiPembayaran/' . $imageName));
+            // }else{
+                $image->move(public_path('/assets/buktiPembayaran'), $imageName);
+            // }
             $validatedData['bukti_pembayaran'] = $imageName;
         }
 

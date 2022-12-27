@@ -23,7 +23,7 @@
               @foreach($pembayarans as $pembayaran)
               <tr class="text-center">
                 <th scope="row">{{ $loop->iteration }}</th>
-                <td>{{ $pembayaran->id }}</td>
+                <td>{{ $pembayaran->biodata->no_seleksi }}</td>
                 <td>{{ $pembayaran->nama_pemilik }}</td>
                 <td><a href="{{ route('dashboard.buktiPembayaran', $pembayaran->id) }}">Lihat</a></td>
                 <td><a href="{{ route('dashboard.detailPembayaran', $pembayaran->id) }}">Detail</a></td>
