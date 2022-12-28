@@ -34,7 +34,11 @@
         <tr>
             <td width="30%" style="font-size: 13px"><b>TANGGAL DAFTAR</b></td>
             <td width="3%">:</td>
-            <td>{{ now()->format('d F Y H:i:s') }}</td>
+            @if(Request::is('dashboard/data-siswa*'))
+            <td>{{ $biodata->created_at->translatedFormat('l, d F Y H:i:s') }}</td>
+            @else
+            <td>{{ now()->translatedFormat('l, d F Y H:i:s') }}</td>
+            @endif
         </tr>
         <tr>
             <td width="30%" style="font-size: 13px"><b>NOMOR SELEKSI</b></td>

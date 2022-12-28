@@ -23,9 +23,10 @@ class PembayaranController extends Controller
     }
 
     public function buktiPembayaran(Pembayaran $pembayaran) {
-        return view('dashboard.buktiPembayaran', [
-            'pembayaran' => $pembayaran
-        ]);
+        return redirect('/assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran);
+        // return view('dashboard.buktiPembayaran', [
+        //     'pembayaran' => $pembayaran
+        // ]);
     }
 
     /**
