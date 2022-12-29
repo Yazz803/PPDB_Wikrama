@@ -30,6 +30,10 @@
         href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
         
     <style>
+        .table-siswa,
+        .table-pembayaran {
+            overflow: scroll !important;
+        }
         @media (max-width: 768px) {
             .input-pembayaran {
                 width: 100% !important;

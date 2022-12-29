@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 class PembayaranController extends Controller
 {
     public function dashboardPembayaranAdmin() {
-        $pembayarans = Pembayaran::all();
+        $pembayarans = Pembayaran::paginate(20);
         return view('dashboard.pembayaranAdmin', [
             'pembayarans' => $pembayarans
         ]);
@@ -23,7 +23,7 @@ class PembayaranController extends Controller
     }
 
     public function buktiPembayaran(Pembayaran $pembayaran) {
-        return redirect('/assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran);
+        return redirect(asset('assets/buktiPembayaran/' . $pembayaran->bukti_pembayaran));
         // return view('dashboard.buktiPembayaran', [
         //     'pembayaran' => $pembayaran
         // ]);

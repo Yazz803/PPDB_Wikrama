@@ -13,9 +13,9 @@ class BiodataController extends Controller
 {
 
     public function dataSemuaSiswa() {
-        $biodatas = Biodata::all();
+        $biodatas = Biodata::paginate(20);
         return view('dashboard.dataSemuaSiswa', [
-            'biodatas' => $biodatas
+            'biodatas' => $biodatas,
         ]);
     }
 

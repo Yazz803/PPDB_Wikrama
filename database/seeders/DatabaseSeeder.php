@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Biodata;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
 
         \App\Models\User::create([
             'name' => 'Muhammad Yazid Akbar',
@@ -44,5 +44,7 @@ class DatabaseSeeder extends Seeder
             'no_seleksi' => '001',
             'user_id' => 2,
         ]);
+
+        // User::factory(30)->create();
     }
 }

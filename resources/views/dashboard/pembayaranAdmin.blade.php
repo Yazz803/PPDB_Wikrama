@@ -7,7 +7,9 @@
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Dashboard / Verifikasi Pembayaran</a>
     </div>
     
-    <div class="container border border-dark rounded">
+    {{ $pembayarans->links() }}
+
+    <div class="table-pembayaran container border border-dark rounded">
         <table class="table table-striped mt-2">
             <thead>
               <tr class="text-center">
@@ -22,7 +24,7 @@
             <tbody>
               @foreach($pembayarans as $pembayaran)
               <tr class="text-center">
-                <th scope="row">{{ $loop->iteration }}</th>
+                <th scope="row">{{ $loop->iteration + $pembayarans->firstItem() - 1 }}</th>
                 <td>{{ $pembayaran->biodata->no_seleksi }}</td>
                 <td>{{ $pembayaran->nama_pemilik }}</td>
                 <td><a href="{{ route('dashboard.buktiPembayaran', $pembayaran->id) }}">Lihat</a></td>
@@ -55,4 +57,7 @@
             </tbody>
           </table>
     </div>
+
+    <br>
+    {{ $pembayarans->links() }}
 @endsection
