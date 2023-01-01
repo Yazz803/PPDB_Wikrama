@@ -28,7 +28,7 @@
     <!-- jika menggunakan bootstrap4 gunakan css ini  -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
-        
+        <!-- Scripts -->
     <style>
         .table-siswa,
         .table-pembayaran {
@@ -105,6 +105,8 @@
         </div>
     </div>
 
+    @stack('scripts')
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/dashboard/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -114,13 +116,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/dashboard/js/sb-admin-2.min.js') }}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{{ asset('assets/dashboard/vendor/chart.js/Chart.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('assets/dashboard/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/demo/chart-pie-demo.js') }}"></script>
 
     <!-- wajib jquery  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

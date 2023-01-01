@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\BiodataController;
-use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,7 @@ Route::group(['middleware' => 'mustLogin', 'prefix' => 'dashboard'], function ()
         Route::get('/data-siswa', [BiodataController::class, 'dataSemuaSiswa'])->name('dashboard.dataSemuaSiswa');
         Route::get('/data-siswa/{biodata:id}', [BiodataController::class, 'dataSiswa'])->name('dashboard.dataSiswa');
         Route::delete('/data-siswa/{biodata:id}', [BiodataController::class, 'destroy'])->name('dashboard.dataSiswa.delete');
+        Route::get('/all-users', [UserDashboardController::class, 'index'])->name('dashboard.allUsers');
     });
 });
 Route::get('/login', [LoginController::class, 'index'])->name('login.index')->middleware('guest');
@@ -48,3 +51,7 @@ Route::post('/pendaftaran', [BiodataController::class, 'store'])->name('form.sto
 Route::get('/gk-boleh-kesini', function() {
     return view('forbidenPage');
 })->name('forbidenPage');
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

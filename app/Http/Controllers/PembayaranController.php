@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\PembayaransDataTable;
 use App\Models\Biodata;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
@@ -9,11 +10,8 @@ use Intervention\Image\Facades\Image;
 
 class PembayaranController extends Controller
 {
-    public function dashboardPembayaranAdmin() {
-        $pembayarans = Pembayaran::paginate(20);
-        return view('dashboard.pembayaranAdmin', [
-            'pembayarans' => $pembayarans
-        ]);
+    public function dashboardPembayaranAdmin(PembayaransDataTable $dataTable) {
+        return $dataTable->render('dashboard.pembayaranAdmin');
     }
 
     public function detailPembayaran(Pembayaran $pembayaran) {

@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
 use App\Models\User;
+// use PDF;
 use App\Models\Biodata;
+use Barryvdh\DomPDF\PDF;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\DataTables\BiodatasDataTable;
 
 class BiodataController extends Controller
 {
 
-    public function dataSemuaSiswa() {
-        $biodatas = Biodata::paginate(20);
-        return view('dashboard.dataSemuaSiswa', [
-            'biodatas' => $biodatas,
-        ]);
+    public function dataSemuaSiswa(BiodatasDataTable $dataTable) {
+        return $dataTable->render('dashboard.dataSemuaSiswa');
     }
 
     public function dataSiswa(Biodata $biodata) {

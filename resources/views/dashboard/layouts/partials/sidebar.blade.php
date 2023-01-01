@@ -45,6 +45,12 @@
                 <i class="fas fa-fw fa-users"></i>
                 <span>Data Students</span></a>
         </li>
+
+        <li class="nav-item {{ Request::is('dashboard/all-users*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('dashboard.allUsers') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>All Users</span></a>
+        </li>
     @endif
 
     <!-- Divider -->

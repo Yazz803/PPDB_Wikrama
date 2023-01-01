@@ -45,6 +45,8 @@ class DatabaseSeeder extends Seeder
             'user_id' => 2,
         ]);
 
-        // User::factory(30)->create();
+        Biodata::factory(100)->create();
+
+        User::factory(30)->create();
     }
 }
