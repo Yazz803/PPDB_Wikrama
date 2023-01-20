@@ -27,6 +27,11 @@ class PembayaranController extends Controller
         // ]);
     }
 
+    public function riwayatPembayaran(){
+        $pembayarans = Pembayaran::where('user_id', auth()->user()->id)->latest()->get();
+        return view('dashboard.riwayatPembayaran', compact('pembayarans'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,6 +61,8 @@ class PembayaranController extends Controller
             $validatedData['nama_bank'] = $request->nama_bank_lainnya;
         }
 
+        
+
         if($request->file('bukti_pembayaran')){
             // Buat Folder baru
             // $imagePath = public_path('/assets/buktiPembayaran/');
@@ -64,7 +71,7 @@ class PembayaranController extends Controller
             // }
             $image = $request->file('bukti_pembayaran');
             // $imageSize = round($image->getSize() / 1000); // Ngitung size gambar dalam KB
-            $imageName = 'Pembayaran_' . $request->nama_pemilik . '_' . auth()->user()->biodata->nisn . "_" . mt_rand(100, 1000) . '.' . $image->extension();
+            $imageName = 'Pembayaran_' . $request->nama_pemilik . '_' . auth()->user()->biodata->nisn . "_" . random_int(100, 1000) . '.' . $image->extension();
             // if($imageSize > 1024){
             //     $img = Image::make($image->path());
             //     $img->resize(500,500, function ($const) {

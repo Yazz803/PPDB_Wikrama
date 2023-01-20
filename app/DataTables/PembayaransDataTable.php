@@ -109,7 +109,9 @@ class PembayaransDataTable extends DataTable
     {
         return [
             Column::make('id')
-                  ->width(10),
+                  ->width(10)
+                    ->visible(false)
+                  ,
             Column::make('no_seleksi'),
             Column::make('nama_pemilik'),
             Column::computed('bukti_pembayaran')

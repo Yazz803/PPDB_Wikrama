@@ -24,6 +24,7 @@ Route::get('/pendaftaran', [PagesController::class, 'formPage'])->name('form.ind
 
 Route::group(['middleware' => 'mustLogin', 'prefix' => 'dashboard'], function () {
     Route::get('/', [PagesController::class, 'dashboard'])->name('dashboard.index');
+    Route::get('/riwayat-pembayaran', [PembayaranController::class, 'riwayatPembayaran'])->name('dashboard.riwayatpembayaran.user');
     Route::prefix('pembayaran')->group(function () {
         Route::get('/', [PagesController::class, 'dashboardPembayaranUser'])->name('dashboard.pembayaran.user')->middleware('UserOnly');
         Route::post('/', [PembayaranController::class, 'store'])->name('dashboard.pembayaran.store');

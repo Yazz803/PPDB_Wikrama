@@ -32,6 +32,13 @@
                 <i class="fas fa-fw fa-credit-card"></i>
                 <span>Pembayaran</span></a>
         </li>
+
+        <li class="nav-item {{ Request::is('dashboard/riwayat-pembayaran') ? 'active' : '' }}">
+            <a href="{{ route('dashboard.riwayatpembayaran.user') }}" class="nav-link">
+                <i class="fas fa-fw fa-credit-card"></i>
+                <span>Riwayat Pembayaran</span>
+            </a>
+        </li>
     @endif
 
     @if(auth()->user()->role == 'admin')

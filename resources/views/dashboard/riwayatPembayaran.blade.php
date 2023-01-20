@@ -10,33 +10,15 @@
 
     <!-- Content Row -->
     <div class="row justify-content-between align-items-start">
-        <div class="card-dashboard alert bg-light border border-dark shadow p-3 mb-5 bg-body rounded" style="width: 49%" role="alert">
-            <h4 class="alert-heading font-weight-bold">{{ auth()->user()->role == 'admin' ? 'Admin' : 'Biodata Siswa' }}</h4>
-            @if(auth()->user()->role == 'user')
-            <ul>
-                <li><span class="font-weight-bold">Nomor Seleksi : </span>{{ auth()->user()->biodata->no_seleksi }}</li>
-                <li><span class="font-weight-bold">Nama : </span>{{ auth()->user()->biodata->nama }}</li>
-                <li><span class="font-weight-bold">NISN : </span>{{ auth()->user()->biodata->nisn }}</li>
-                <li><span class="font-weight-bold">Email : </span>{{ auth()->user()->biodata->email }}</li>
-                <li><span class="font-weight-bold">Asal Sekolah : </span>{{ auth()->user()->biodata->asal_sekolah }}</li>
-                <li><span class="font-weight-bold">Nomor HP : </span>{{ auth()->user()->biodata->nomor_hp }}</li>
-                <li><span class="font-weight-bold">Nomor HP Ayah : </span>{{ auth()->user()->biodata->nomor_hp_ayah }}</li>
-                <li><span class="font-weight-bold">Nomor HP Ibu : </span>{{ auth()->user()->biodata->nomor_hp_ibu }}</li>
-            </ul>
-            @else
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia consequuntur perspiciatis voluptatibus deleniti non eligendi voluptate dignissimos quo recusandae maiores!</p>
-            @endif
-        </div>
 
-        <div class="card-dashboard alert bg-light border border-dark shadow p-3 mb-5 bg-body rounded" style="width: 49%" role="alert">
+        <div class="card-dashboard alert bg-light border border-dark shadow p-3 mb-5 bg-body rounded" style="width: 100%" role="alert">
             <h4 class="alert-heading text-dark font-weight-bold"><i class="fa fa-bell"></i> Notification</h4>
-            @forelse($pembayarans->take(1) as $pembayaran)
+            @forelse($pembayarans as $pembayaran)
                 @if($pembayaran->status == 'di tolak')
                 <div class="alert bg-danger text-light">
                     <h5 class="font-weight-bold">Pembayaran Di tolak!</h5>
                     <p class="mb-0">Di tolak tgl : <span class="font-weight-bold">{{ $pembayaran->updated_at->format('d F Y H:i:s') }}</span></p>
                     <p>Alasan Di tolak  : <span class="font-weight-bold">{{ $pembayaran->message }}</span></p>
-                    <p>Silahkan mengisi form pembayaran kembali <a class="text-info font-weight-bold" href="{{ route('dashboard.pembayaran.user') }}">Di sini</a></p>
                 </div>
                 @elseif($pembayaran->status == 'di verifikasi')
                 <div class="alert bg-success text-light">

@@ -23,7 +23,7 @@
       <form action="{{ route('dashboard.pembayaran.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
           <h5 class="font-weight-bold">Form Pembayaran</h5>
-          <div class="atas d-flex align-items-end" style="gap: 20px;flex-wrap: wrap;">
+          <div class="atas d-flex align-items-end justify-content-between" style="flex-wrap: wrap;">
               <div class="mb-3 input-pembayaran" style="width: 32%">
                 <label for="exampleInputEmail1" class="text-dark font-weight-bold">Nama Bank</label>
                 <select name="nama_bank" id="nama_bank" class="form-control" onchange="checkvalue(this.value)">

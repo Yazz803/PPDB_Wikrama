@@ -17,7 +17,7 @@ class PagesController extends Controller
     }
 
     public function dashboard() {
-        $pembayarans = Pembayaran::where('user_id', auth()->user()->id)->get();
+        $pembayarans = Pembayaran::where('user_id', auth()->user()->id)->latest()->get();
         $allPembayarans = Pembayaran::all();
         return view('dashboard.index', compact('pembayarans', 'allPembayarans'));
     }

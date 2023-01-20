@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-// use PDF;
+use PDF;
 use App\Models\Biodata;
-use Barryvdh\DomPDF\PDF;
+// use Barryvdh\DomPDF\PDF;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\DataTables\BiodatasDataTable;
 
@@ -48,7 +49,7 @@ class BiodataController extends Controller
             'nomor_hp_ibu.required' => "Nomor HP Ibu tidak boleh kosong",
         ]);
 
-        $validatedData['no_seleksi'] = mt_rand(1,1111);
+        $validatedData['no_seleksi'] = random_int(1,1111);
         if($request->asal_sekolah_lainnya != NULL){
             $validatedData['asal_sekolah'] = $request->asal_sekolah_lainnya;
         }elseif($request->asal_sekolah == 'lainnya'){
